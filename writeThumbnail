@@ -1,0 +1,5 @@
+BEGIN { print "\\begin{minted}[breaklines, tabsize=4]{tex}"}
+(NR > 1){ 
+		print $0
+		}
+END { print "\\end{minted}" }

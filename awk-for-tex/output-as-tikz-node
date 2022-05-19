@@ -1,0 +1,27 @@
+{
+	}END{
+		print "\\draw[rounded corners] (0, 0) rectangle (10, " NR/2 + 1 ");\n
+		\\draw[-Stealth, ultra thick] (0.5, " NR/2 + 0.5 ") -- (0.6, " NR/2 + 0.5 ");"
+		}
+
+{
+	gsub(/\{/, "\\\\{");
+	gsub(/\}/, "\\\\}");
+	gsub(/\$/, "\\\\$");
+	gsub(/\^/, "\\\\string\^");
+	print
+}
+
+{
+	}END{
+		print "\\node at (0.6, " NR/2 + 0.5 ")[right, text width=9cm] \{\\texttt\{" t " \| awk \$\47\$" tt "\$\47\$ \}\};"
+		} 
+
+
+{
+	gsub(/_/, "\\_");
+	print "\\node at (0.6, " y/2 + x")[right, text width=9cm] \{\\texttt\{" $0 "\}\};";
+	x-=0.5
+}
+
+
